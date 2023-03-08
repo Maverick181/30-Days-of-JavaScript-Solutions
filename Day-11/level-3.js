@@ -26,3 +26,25 @@ let {
     area: a,
     perimeter: p
 } = rectangle
+
+onst newStudent = Object.assign({}, student, {
+    skills: {
+      frontEnd: [
+        ...student.skills.frontEnd,
+        { skill: 'BootStrap', level: 8 }
+      ],
+      backEnd: [
+        ...student.skills.backEnd,
+        { skill: 'Express', level: 9 }
+      ],
+      dataBase: [
+        ...student.skills.dataBase,
+        { skill: 'SQL', level: 8 }
+      ],
+      dataScience: [
+        ...student.skills.dataScience,
+        'SQL'
+      ]
+    }
+  });
+  console.log(newStudent);
