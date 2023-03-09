@@ -1,28 +1,34 @@
-let text2 = "He earns 4000 euro from salary per month, 10000 euro annual bonus, 5500 euro online courses per month."
-let salaries = text2.match(/\d+/g);
-let totalAnnualIncome = 0;
-salaries.forEach(element => {
-    totalAnnualIncome += Number(element);
-})
-console.log(totalAnnualIncome)
+const mounthly = /\b\d{4}\b/g  
+const annualBonus = /\d{5}/g  
+const txt =  'He earns 4000 euro from salary per month, 10000 euro annual bonus, 5500 euro online courses per month.'
+const matches = txt.match(mounthly)
+console.log(matches);
+const matches1 = parseInt(txt.match(annualBonus))
+console.log(matches1);
+let totMounthly = matches.reduce((arr,cv) =>arr +=cv*12 ,0)
+let totalAnnualIncome = totMounthly + matches1
+console.log(totalAnnualIncome)  
 
-let text = "The position of some particles on the horizontal x-axis -12, -4, -3 and -1 in the negative direction, 0 at origin, 4 and 8 in the positive direction"
-let sortingPoint = text2.match(/\d+/g);
-sortingPoint = sortingPoint.map((elements) => {
-    return Number(elements)
-})
-const distBtwTwoPart = (arr) => {
-    let distBtw = arr[arr.length - 1] - arr[0]
-    return distBtw
-}
-console.log(distBtwTwoPart(sortingPoint));
+
+const text = `The position of some particles on the horizontal x-axis  -4, -3 and -1 in the negative direction, 0 at origin, 4 and 8 in the positive direction.
+                 Extract these numbers and find the distance between the two furthest particles.`;
+const pattern = /-?\d+/g
+const points = text.match(pattern)
+const sortedPoints = points.sort((a,b)=> {return a-b});
+let differences = parseInt (sortedPoints[sortedPoints.length - 1]-sortedPoints[0])
+console.log(differences);
 
 //to check for javascript valid variable
-const pattern = /[F/f]irst[Nn]ame|[F/f]irst_[Nn]ame/
-const isValidVariable = (str) => {
-    console.log(pattern.test(str));
+const is_valid_variable = str =>{
+    const pat1= /[a-zA-Z_$][a-zA-Z0-9_$]*$/ 
+    const match = str.match(pat1);
+    if(match.index !== 0)
+        console.log(false);
+    else 
+        console.log(true);
 }
-isValidVariable('first_name')
-
-
+is_valid_variable('first_name') 
+is_valid_variable('first-name') 
+is_valid_variable('1first_name') 
+is_valid_variable('firstname') 
 
